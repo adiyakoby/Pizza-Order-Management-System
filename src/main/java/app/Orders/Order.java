@@ -1,16 +1,11 @@
 package app.Orders;
 
-import app.Pizzas.Pizza;
-
-import java.util.ArrayList;
-
 public class Order {
-    private Long id;
+    private String id;
     private String firstName;
     private String lastName;
     private String address;
     private String number;
-//    private ArrayList<Pizza> pizzas;
 
     public Order() {
     }
@@ -30,19 +25,29 @@ public class Order {
         this.number = order.number;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+
+    public void setId(String id) {
         this.id = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
-//    public ArrayList<Pizza> getPizzas() {
-//        return this.pizzas;
-//    }
-//
-//    public void setPizzas(ArrayList<Pizza> pizzas) {
-//        this.pizzas = pizzas;
-//    }
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+
 }

@@ -40,7 +40,7 @@ public class OrdersRestController {
     }
 
     @GetMapping("{id}")
-    public Order getOrder(@PathVariable int id) {
+    public Order getOrder(@PathVariable String id) {
         Order order = OrdersController.getOrder(id);
         logger.info("got order {}", id);
         if (order == null) {

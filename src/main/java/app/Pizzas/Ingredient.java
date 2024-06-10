@@ -15,4 +15,12 @@ public class Ingredient {
     public String getName() {
         return name;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getImage() {
+        return image;
+    }
 }

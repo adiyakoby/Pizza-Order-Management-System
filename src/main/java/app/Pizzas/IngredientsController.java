@@ -1,9 +1,7 @@
 package app.Pizzas;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class IngredientsController {
     private static final ArrayList<Ingredient> ingredients = new ArrayList<>(List.of(
