@@ -20,7 +20,7 @@ public class Order {
         checkNotEmpty(lastName);
         checkNotNull(address);
         checkNotEmptyAndEqualLength(number, 10);
-        checkNotNull(pizzas);
+        checkNotNullAndLengthAboveEq(pizzas, 1);
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,7 +35,7 @@ public class Order {
         this.lastName = order.lastName;
         this.address = order.address;
         this.number = order.number;
-        pizzas = order.pizzas;
+        this.pizzas = order.pizzas;
     }
 
     public String getId() {

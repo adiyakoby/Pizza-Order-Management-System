@@ -1,23 +1,27 @@
 package app.Pizzas;
 
-import static app.utils.Validation.checkNotNullAndLengthAbove;
 import java.util.ArrayList;
+import static app.utils.Validation.checkNotNullAndLengthAboveEq;
 
 
 public class Pizza {
-    private final ArrayList<String> ingredients;
+    private final ArrayList<Ingredient> ingredients;
 
 
 
 
-    public Pizza(ArrayList<String> ingredients) {
-        checkNotNullAndLengthAbove(ingredients, 2);
+    public Pizza(){
+        this.ingredients = new ArrayList<>();
+    }
+
+    public Pizza(ArrayList<Ingredient> ingredients) {
+        checkNotNullAndLengthAboveEq(ingredients, 2);
         this.ingredients = ingredients;
     }
 
 
 
-    public ArrayList<String> getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
 }
