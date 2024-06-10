@@ -8,7 +8,7 @@ public class Order {
     private String id;
     private String firstName;
     private String lastName;
-    private String address;
+    private Address address;
     private String number;
 
     private ArrayList<Pizza> pizzas;
@@ -17,7 +17,7 @@ public class Order {
 
     }
 
-    public Order(String firstName, String lastName, String address, String number) {
+    public Order(String firstName, String lastName, Address address, String number) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -50,7 +50,7 @@ public class Order {
         return lastName;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 

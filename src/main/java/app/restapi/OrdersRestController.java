@@ -22,14 +22,14 @@ public class OrdersRestController {
 
     @GetMapping("")
     public ArrayList<Order> getOrders() {
-        logger.info("request all orders, sent: " + OrdersController.getAllOrders());
+        logger.info("requested all orders. ");
         return OrdersController.getAllOrders();
     }
 
 
     @GetMapping("/ingredients")
     public ArrayList<Ingredient> getIngredients() {
-        logger.info("got all books");
+        logger.info("requests all ingredients. ");
         return IngredientsController.getIngredients();
     }
 
@@ -43,7 +43,7 @@ public class OrdersRestController {
     @GetMapping("{id}")
     public Order getOrder(@PathVariable String id) {
         Order order = OrdersController.getOrder(id);
-        logger.info("got order {}", id);
+        logger.info("requests order {}", id);
         if (order == null) {
             logger.info("order not found");
         }
