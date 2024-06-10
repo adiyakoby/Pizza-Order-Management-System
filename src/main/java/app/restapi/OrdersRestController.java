@@ -1,16 +1,15 @@
 package app.restapi;
 import app.Orders.OrdersController;
-import app.Pizzas.Ingredients;
+import app.Pizzas.Ingredient;
 import app.Orders.Order;
 
+import app.Pizzas.IngredientsController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -28,9 +27,9 @@ public class OrdersRestController {
 
 
     @GetMapping("/ingredients")
-    public Map<String, String> getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         logger.info("got all books");
-        return Ingredients.getAllIngredients();
+        return IngredientsController.getIngredients();
     }
 
     @PostMapping("")
@@ -41,18 +40,18 @@ public class OrdersRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Order> getOrder(@PathVariable int id) {
+    public Order getOrder(@PathVariable int id) {
         Order order = OrdersController.getOrder(id);
         logger.info("got order {}", id);
         if (order == null) {
             logger.info("order not found");
         }
-        return ResponseEntity.ok(order);
+        return order;
     }
 
-    @ExceptionHandler({MethodArgumentTypeMismatchException.class, IllegalArgumentException.class})
-    public ResponseEntity<String> handleAllExceptions(Exception ex) {
-        return ResponseEntity.badRequest().body("Invalid request: " + ex.getMessage());
-    }
+//    @ExceptionHandler({MethodArgumentTypeMismatchException.class, IllegalArgumentException.class})
+//    public ResponseEntity<String> handleAllExceptions(Exception ex) {
+//        return ResponseEntity.badRequest().body("Invalid request: " + ex.getMessage());
+//    }
 
 }
