@@ -24,10 +24,11 @@ public class Validation {
     }
 
     public static <T> void checkNotNullAndLengthAboveEq(ArrayList<T> list, int min) {
-        if (list.size() < min) {
-            throw new IllegalArgumentException("List must have at least " + min + " elements");
+        if (list == null || list.size() < min) {
+            throw new IllegalArgumentException("List must not be null and must have at least " + min + " elements");
         }
     }
+
 
 
 }

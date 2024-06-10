@@ -5,6 +5,7 @@ import app.Pizzas.Pizza;
 import java.util.ArrayList;
 
 import static app.utils.Validation.*;
+import static app.utils.Validation.checkNotNullAndLengthAboveEq;
 
 public class Order {
     private String id;
@@ -21,6 +22,9 @@ public class Order {
         checkNotNull(address);
         checkNotEmptyAndEqualLength(number, 10);
         checkNotNullAndLengthAboveEq(pizzas, 1);
+        for (Pizza pizza : pizzas) {
+            checkNotNullAndLengthAboveEq(pizza.getIngredients(), 2);
+        }
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,6 +34,8 @@ public class Order {
     }
 
     public Order(Order order) {
+
+        checkNotNullAndLengthAboveEq(order.pizzas, 1);
         this.id = order.id;
         this.firstName = order.firstName;
         this.lastName = order.lastName;
