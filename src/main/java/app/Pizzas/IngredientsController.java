@@ -5,14 +5,14 @@ import java.util.List;
 
 public class IngredientsController {
     private static final ArrayList<Ingredient> ingredients = new ArrayList<>(List.of(
-            new Ingredient("mozzarella", 10, "."),
-            new Ingredient("Tomatoes", 10, "."),
-            new Ingredient("Mushrooms", 10, "."),
-            new Ingredient("Green Peppers", 10, "."),
-            new Ingredient("Pepperoni", 10, "."),
-            new Ingredient("Green Olives", 10, "."),
-            new Ingredient("Black Olives", 10, "."),
-            new Ingredient("Extra Cheese", 10, ".")
+            new Ingredient(IngredientConstants.MOZZARRELLA_NAME, IngredientConstants.MOZZARRELLA_PRICE, IngredientConstants.MOZZARRELLA_IMAGE),
+            new Ingredient(IngredientConstants.TOMATOES_NAME, IngredientConstants.TOMATOES_PRICE, IngredientConstants.TOMATOES_IMAGE),
+            new Ingredient(IngredientConstants.MUSHROOMS_NAME, IngredientConstants.MUSHROOMS_PRICE, IngredientConstants.MUSHROOMS_IMAGE),
+            new Ingredient(IngredientConstants.GREEN_PEPPERS_NAME, IngredientConstants.GREEN_PEPPERS_PRICE, IngredientConstants.GREEN_PEPPERS_IMAGE),
+            new Ingredient(IngredientConstants.PEPPERONI_NAME, IngredientConstants.PEPPERONI_PRICE, IngredientConstants.PEPPERONI_IMAGE),
+            new Ingredient(IngredientConstants.GREEN_OLIVES_NAME, IngredientConstants.GREEN_OLIVES_PRICE, IngredientConstants.GREEN_OLIVES_IMAGE),
+            new Ingredient(IngredientConstants.BLACK_OLIVES_NAME, IngredientConstants.BLACK_OLIVES_PRICE, IngredientConstants.BLACK_OLIVES_IMAGE),
+            new Ingredient(IngredientConstants.EXTRA_CHEESES_NAME, IngredientConstants.EXTRA_CHEESES_PRICE, IngredientConstants.EXTRA_CHEESES_NAME)
         ));
 
     public IngredientsController() {
