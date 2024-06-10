@@ -3,9 +3,9 @@ package app.Pizzas;
 
 
 public class IngredientConstants {
-    public static final String MOZZARRELLA_NAME = "Mozzarella";
-    public static final int MOZZARRELLA_PRICE = 12;
-    public static final String MOZZARRELLA_IMAGE = "/images/mozzarella.jpeg";
+    public static final String MOZZARELLA_NAME = "Mozzarella";
+    public static final int MOZZARELLA_PRICE = 12;
+    public static final String MOZZARELLA_IMAGE = "/images/mozzarella.jpeg";
 
     public static final String TOMATOES_NAME = "Tomatoes";
     public static final String TOMATOES_IMAGE = "/images/Tomatoes.jpeg";

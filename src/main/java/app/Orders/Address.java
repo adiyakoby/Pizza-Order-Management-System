@@ -1,11 +1,18 @@
 package app.Orders;
 
+import static app.utils.Validation.checkNotEmpty;
+
 public class Address {
     private String street;
     private String houseNumber;
     private String city;
 
+
     public Address(String street, String houseNumber, String city) {
+        checkNotEmpty(street);
+        checkNotEmpty(houseNumber);
+        checkNotEmpty(city);
+
         this.street = street;
         this.houseNumber = houseNumber;
         this.city = city;

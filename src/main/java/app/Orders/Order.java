@@ -4,25 +4,29 @@ import app.Pizzas.Pizza;
 
 import java.util.ArrayList;
 
+import static app.utils.Validation.*;
+
 public class Order {
     private String id;
     private String firstName;
     private String lastName;
     private Address address;
     private String number;
-
     private ArrayList<Pizza> pizzas;
 
-    public Order() {
 
-    }
+    public Order(String firstName, String lastName, Address address, String number, ArrayList<Pizza> pizzas) {
+        checkNotEmpty(firstName);
+        checkNotEmpty(lastName);
+        checkNotNull(address);
+        checkNotEmptyAndEqualLength(number, 10);
+        checkNotNull(pizzas);
 
-    public Order(String firstName, String lastName, Address address, String number) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.number = number;
-        pizzas = null;
+        this.pizzas = pizzas;
     }
 
     public Order(Order order) {
@@ -31,7 +35,7 @@ public class Order {
         this.lastName = order.lastName;
         this.address = order.address;
         this.number = order.number;
-        pizzas = null;
+        pizzas = order.pizzas;
     }
 
     public String getId() {
@@ -56,6 +60,10 @@ public class Order {
 
     public String getNumber() {
         return number;
+    }
+
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
     }
 
 

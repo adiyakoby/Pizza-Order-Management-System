@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IngredientsController {
     private static final ArrayList<Ingredient> ingredients = new ArrayList<>(List.of(
-            new Ingredient(IngredientConstants.MOZZARRELLA_NAME, IngredientConstants.MOZZARRELLA_PRICE, IngredientConstants.MOZZARRELLA_IMAGE),
+            new Ingredient(IngredientConstants.MOZZARELLA_NAME, IngredientConstants.MOZZARELLA_PRICE, IngredientConstants.MOZZARELLA_IMAGE),
             new Ingredient(IngredientConstants.TOMATOES_NAME, IngredientConstants.TOMATOES_PRICE, IngredientConstants.TOMATOES_IMAGE),
             new Ingredient(IngredientConstants.MUSHROOMS_NAME, IngredientConstants.MUSHROOMS_PRICE, IngredientConstants.MUSHROOMS_IMAGE),
             new Ingredient(IngredientConstants.GREEN_PEPPERS_NAME, IngredientConstants.GREEN_PEPPERS_PRICE, IngredientConstants.GREEN_PEPPERS_IMAGE),

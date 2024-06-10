@@ -2,9 +2,9 @@ package app.Pizzas;
 
 
 public class Ingredient {
-    private String name;
-    private double price;
-    private String image;
+    private final String name;
+    private final double price;
+    private final String image;
 
     public Ingredient(String name, double price, String image) {
         this.name = name;
