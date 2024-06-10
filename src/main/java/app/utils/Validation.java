@@ -1,5 +1,7 @@
 package app.utils;
 
+import app.Pizzas.Ingredient;
+
 import java.util.ArrayList;
 
 public class Validation {
@@ -21,9 +23,11 @@ public class Validation {
         }
     }
 
-    public static void checkNotNullAndLengthAbove(ArrayList<String> ingredients, int min) {
-        if (ingredients.size() < 2) {
-            throw new IllegalArgumentException("Must have at least two ingredients");
+    public static <T> void checkNotNullAndLengthAboveEq(ArrayList<T> list, int min) {
+        if (list.size() < min) {
+            throw new IllegalArgumentException("List must have at least " + min + " elements");
         }
     }
+
+
 }
