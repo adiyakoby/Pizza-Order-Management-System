@@ -1,4 +1,6 @@
-package hac.Orders;
+package app.Orders;
+
+import app.Pizzas.Pizza;
 
 import java.util.ArrayList;
 

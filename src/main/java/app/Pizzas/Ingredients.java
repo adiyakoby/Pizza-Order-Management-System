@@ -1,4 +1,4 @@
-package hac.Orders;
+package app.Pizzas;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,14 +15,6 @@ public class Ingredients {
         ingredients.put("Green Olives", ".");
         ingredients.put("Black Olives", ".");
         ingredients.put("Extra Cheese", ".");
-//        ingredients.add("mozzarella");
-//        ingredients.add("Tomatoes");
-//        ingredients.add("Mushrooms");
-//        ingredients.add("Green Peppers");
-//        ingredients.add("Pepperoni");
-//        ingredients.add("Olives");
-//        ingredients.add("Black Olives");
-//        ingredients.add("Extra Cheese");
     }
 
     String getIngredient(String ingredient) {

@@ -1,6 +1,7 @@
-package hac.restapi;
-import hac.Orders.Ingredients;
-import hac.Orders.Order;
+package app.restapi;
+import app.Orders.OrdersController;
+import app.Pizzas.Ingredients;
+import app.Orders.Order;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,11 +19,11 @@ public class OrdersRestController {
 
     private static final Logger logger = LogManager.getLogger(OrdersRestController.class);
 
-    private final Map<Long, Order> orders = new HashMap<Long, Order>();
 
     @GetMapping("")
-    public Map<Long, Order> getOrders() {
-        return orders;
+    public ArrayList<Order> getOrders() {
+        logger.info("request all orders, sent: " + OrdersController.getAllOrders());
+        return OrdersController.getAllOrders();
     }
 
 
@@ -33,15 +35,15 @@ public class OrdersRestController {
 
     @PostMapping("")
     public ResponseEntity<Order> addOrder(@RequestBody Order order) {
-        orders.put((long) orders.size(), order);
+        OrdersController.addOrder(order);
         logger.info("added order {}", order);
         return ResponseEntity.ok(order);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Order> getOrder(@PathVariable long id) {
+    public ResponseEntity<Order> getOrder(@PathVariable int id) {
+        Order order = OrdersController.getOrder(id);
         logger.info("got order {}", id);
-        Order order = orders.get(id);
         if (order == null) {
             logger.info("order not found");
         }
