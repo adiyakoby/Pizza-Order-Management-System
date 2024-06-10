@@ -18,7 +18,7 @@ public class IngredientsController {
     public IngredientsController() {
     }
 
-    public static ArrayList<Ingredient> getIngredients() {
+    public static ArrayList<Ingredient>  getIngredients() {
         return ingredients;
     }
 

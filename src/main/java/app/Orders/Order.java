@@ -1,5 +1,9 @@
 package app.Orders;
 
+import app.Pizzas.Pizza;
+
+import java.util.ArrayList;
+
 public class Order {
     private String id;
     private String firstName;
@@ -7,7 +11,10 @@ public class Order {
     private String address;
     private String number;
 
+    private ArrayList<Pizza> pizzas;
+
     public Order() {
+
     }
 
     public Order(String firstName, String lastName, String address, String number) {
@@ -15,6 +22,7 @@ public class Order {
         this.lastName = lastName;
         this.address = address;
         this.number = number;
+        pizzas = null;
     }
 
     public Order(Order order) {
@@ -23,6 +31,7 @@ public class Order {
         this.lastName = order.lastName;
         this.address = order.address;
         this.number = order.number;
+        pizzas = null;
     }
 
     public String getId() {

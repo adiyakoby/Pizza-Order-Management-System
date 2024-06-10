@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -49,9 +50,9 @@ public class OrdersRestController {
         return order;
     }
 
-//    @ExceptionHandler({MethodArgumentTypeMismatchException.class, IllegalArgumentException.class})
-//    public ResponseEntity<String> handleAllExceptions(Exception ex) {
-//        return ResponseEntity.badRequest().body("Invalid request: " + ex.getMessage());
-//    }
+    @ExceptionHandler({MethodArgumentTypeMismatchException.class, IllegalArgumentException.class})
+    public ResponseEntity<String> handleAllExceptions(Exception ex) {
+        return ResponseEntity.badRequest().body("Invalid request: " + ex.getMessage());
+    }
 
 }

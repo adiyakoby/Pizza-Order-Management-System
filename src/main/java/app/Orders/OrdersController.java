@@ -1,23 +1,22 @@
 package app.Orders;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class OrdersController {
+public  class OrdersController {
 
-    private static final Map<String, Order> orders = new HashMap<>();
+    private static final ConcurrentHashMap<String, Order> orders = new ConcurrentHashMap<>();
 
-    public static ArrayList<Order> getAllOrders() {
+    public static synchronized ArrayList<Order> getAllOrders() {
         return new ArrayList<>(orders.values());
     }
 
-    public static Order getOrder(String id) {
+    public static synchronized Order getOrder(String id) {
         return orders.get(id);
     }
 
-    public static void addOrder(Order order) {
+    public static synchronized void addOrder(Order order) {
         order.setId(UUID.randomUUID().toString());
         orders.put(order.getId(), order);
     }
