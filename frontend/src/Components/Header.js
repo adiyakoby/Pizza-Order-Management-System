@@ -22,7 +22,7 @@ function Header() {
                             <Nav.Link href="/">Home</Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">
-                            <Nav.Link href="/cart">
+                            <Nav.Link href="/Cart">
                                 <img
                                     src="/shopping-cart.png"
                                     width="30"
