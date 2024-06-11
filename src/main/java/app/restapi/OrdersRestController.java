@@ -50,10 +50,10 @@ public class OrdersRestController {
      * @return the added order.
      */
     @PostMapping("")
-    public ResponseEntity<Order> addOrder(@RequestBody Order order) {
+    public ResponseEntity<String> addOrder(@RequestBody Order order) {
         OrdersController.addOrder(order);
         logger.info("added order {}", order);
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok(order.getId());
     }
 
     /**
