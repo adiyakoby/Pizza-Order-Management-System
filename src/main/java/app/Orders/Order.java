@@ -5,8 +5,10 @@ import app.Pizzas.Pizza;
 import java.util.ArrayList;
 
 import static app.utils.Validation.*;
-import static app.utils.Validation.checkNotNullAndLengthAboveEq;
 
+/**
+ * Represents an order.
+ */
 public class Order {
     private String id;
     private String firstName;
@@ -15,7 +17,15 @@ public class Order {
     private String number;
     private ArrayList<Pizza> pizzas;
 
-
+    /**
+     * Constructor for Order.
+     *
+     * @param firstName the first name of the customer.
+     * @param lastName  the last name of the customer.
+     * @param address   the address of the customer.
+     * @param number    the phone number of the customer.
+     * @param pizzas    the list of pizzas in the order.
+     */
     public Order(String firstName, String lastName, Address address, String number, ArrayList<Pizza> pizzas) {
         checkNotEmpty(firstName);
         checkNotEmpty(lastName);
@@ -33,16 +43,7 @@ public class Order {
         this.pizzas = pizzas;
     }
 
-    public Order(Order order) {
-
-        checkNotNullAndLengthAboveEq(order.pizzas, 1);
-        this.id = order.id;
-        this.firstName = order.firstName;
-        this.lastName = order.lastName;
-        this.address = order.address;
-        this.number = order.number;
-        this.pizzas = order.pizzas;
-    }
+    // Getters and setters
 
     public String getId() {
         return id;
@@ -71,6 +72,5 @@ public class Order {
     public ArrayList<Pizza> getPizzas() {
         return pizzas;
     }
-
 
 }
