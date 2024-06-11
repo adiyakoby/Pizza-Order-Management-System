@@ -20,7 +20,7 @@ public class IngredientConstants {
     public static final int GREEN_PEPPERS_PRICE = 6;
 
     public static final String PEPPERONI_NAME = "Pepperoni";
-    public static final String PEPPERONI_IMAGE = "/images/Pepperoni.jpg";
+    public static final String PEPPERONI_IMAGE = "/images/Pepperoni.jpeg";
     public static final int PEPPERONI_PRICE = 7;
 
     public static final String GREEN_OLIVES_NAME = "Green Olives";
@@ -32,6 +32,6 @@ public class IngredientConstants {
     public static final int BLACK_OLIVES_PRICE = 9;
 
     public static final String EXTRA_CHEESES_NAME = "Extra Cheeses";
-    public static final String EXTRA_CHEESES_IMAGE = "/images/Extra Cheeses.jpeg";
+    public static final String EXTRA_CHEESES_IMAGE = "/images/Extra Cheese.jpeg";
     public static final int EXTRA_CHEESES_PRICE = 10;
 }
