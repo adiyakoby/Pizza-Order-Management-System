@@ -1,7 +1,12 @@
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 
 function Home() {
+
+
+
+
     return (
         <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light">
             <Row>
@@ -10,15 +15,13 @@ function Home() {
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    <div className="button-group mt-4">
-                        <Button variant="primary" className="home-button mx-2">
+                <Col className="button-group mt-4">
+                        <Link to="/Order" className="btn btn-primary mx-2">
                             Start new Order
-                        </Button>
-                        <Button variant="secondary" className="home-button mx-2">
-                            Check order
-                        </Button>
-                    </div>
+                        </Link>
+                        <Link to="/Check" className="btn btn-secondary mx-2">
+                            Check Order
+                        </Link>
                 </Col>
             </Row>
         </Container>
