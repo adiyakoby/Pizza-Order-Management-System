@@ -12,7 +12,7 @@ public class IngredientsController {
             new Ingredient(IngredientConstants.PEPPERONI_NAME, IngredientConstants.PEPPERONI_PRICE, IngredientConstants.PEPPERONI_IMAGE),
             new Ingredient(IngredientConstants.GREEN_OLIVES_NAME, IngredientConstants.GREEN_OLIVES_PRICE, IngredientConstants.GREEN_OLIVES_IMAGE),
             new Ingredient(IngredientConstants.BLACK_OLIVES_NAME, IngredientConstants.BLACK_OLIVES_PRICE, IngredientConstants.BLACK_OLIVES_IMAGE),
-            new Ingredient(IngredientConstants.EXTRA_CHEESES_NAME, IngredientConstants.EXTRA_CHEESES_PRICE, IngredientConstants.EXTRA_CHEESES_NAME)
+            new Ingredient(IngredientConstants.EXTRA_CHEESES_NAME, IngredientConstants.EXTRA_CHEESES_PRICE, IngredientConstants.EXTRA_CHEESES_IMAGE)
         ));
 
     public IngredientsController() {
