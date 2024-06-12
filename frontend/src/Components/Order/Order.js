@@ -1,6 +1,6 @@
 import Ingredients from "./Ingredients";
 import {Button, Container} from "react-bootstrap";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import OrderTable from "./OrderTable";
 
 function Order() {
@@ -22,14 +22,14 @@ function Order() {
             fluid
             className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light"
         >
-                <OrderTable ingredients={ingredients} removeIngredient={removeIngredient}/>
-                <div style={{fontSize: '24px', fontWeight: 'bold'}}>
-                    Total Price:
-                    ${ingredients.reduce((totalPrice, ingredient) => totalPrice + parseInt(ingredient.price), 5)}
-                </div>
-                <Button> add to cart</Button>
-                <Button className="bg-danger"> Cancel</Button>
-                <Ingredients addIngredient={addIngredient}/>
+            <OrderTable ingredients={ingredients} removeIngredient={removeIngredient}/>
+            <div style={{fontSize: '24px', fontWeight: 'bold'}}>
+                Total Price:
+                ${ingredients.reduce((totalPrice, ingredient) => totalPrice + parseInt(ingredient.price), 5)}
+            </div>
+            <Button disabled={ingredients.length < 2} > add to cart</Button>
+            <Button className="bg-danger"> Cancel</Button>
+            <Ingredients addIngredient={addIngredient}/>
         </Container>
 );
 

@@ -23,9 +23,9 @@ function CartContext({children}) {
     const [cart, dispatch] = useReducer(cartReducer, [])
 
     return(
-        <CartContextProvider value={{cart, dispatch}}>
+        <CartContextProvider.Provider value={{cart, dispatch}}>
             {children}
-        </CartContextProvider>
+        </CartContextProvider.Provider>
 
     );
 }

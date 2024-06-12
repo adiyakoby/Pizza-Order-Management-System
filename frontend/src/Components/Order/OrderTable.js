@@ -1,4 +1,4 @@
-import {Table, Button, Row, Col} from "react-bootstrap";
+import {Table, Button, Row, Col, Alert} from "react-bootstrap";
 
 function OrderTable({ ingredients, removeIngredient }) {
 
@@ -30,6 +30,14 @@ function OrderTable({ ingredients, removeIngredient }) {
                         </tbody>
                     </Table>
                 </Col>
+
+                {ingredients.length < 2 && (
+                    <Alert variant="warning">
+                        Please add at least 2 ingredients to your order.
+                    </Alert>
+                )}
+
+
             </Row>
 
 
