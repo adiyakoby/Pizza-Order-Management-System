@@ -37,7 +37,7 @@ public  class OrdersController {
      * @param order the order to add.
      */
     public static synchronized void addOrder(Order order) {
-        order.setId(UUID.randomUUID().toString());
+        order.setId(UUID.randomUUID().toString().substring(0, 8));
         orders.put(order.getId(), order);
     }
 }
