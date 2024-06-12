@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { Card, Col, Container, Row, Spinner, Alert, Button } from "react-bootstrap";
+import { Card, Col, Row, Spinner, Alert, Button } from "react-bootstrap";
 
 /**
  * Custom hook for fetching data from an API.

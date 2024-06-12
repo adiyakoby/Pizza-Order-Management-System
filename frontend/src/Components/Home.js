@@ -19,7 +19,7 @@ function Home() {
                         <Link to="/Order" className="btn btn-primary mx-2">
                             Start new Order
                         </Link>
-                        <Link to="/Check" className="btn btn-secondary mx-2">
+                        <Link to="/CheckOrder" className="btn btn-secondary mx-2">
                             Check Order
                         </Link>
                 </Col>

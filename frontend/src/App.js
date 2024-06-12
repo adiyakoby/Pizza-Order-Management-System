@@ -6,6 +6,7 @@ import Home from "./Components/Home";
 import NoPage from "./Components/NoPage";
 import Header from "./Components/Header";
 import Order from "./Components/Order/Order";
+import CheckOrder from "./Components/CheckOrder";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Header/>}>
             <Route index element={<Home/>} />
             <Route path="/Order" element={<Order/>} />
+            <Route path="/CheckOrder" element={<CheckOrder/>} />
             <Route path="*" element={<NoPage/>} />
           </Route>
         </Routes>

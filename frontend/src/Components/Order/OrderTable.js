@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-import {Table, Button, Container, Row, Col} from "react-bootstrap";
+import {Table, Button, Row, Col} from "react-bootstrap";
 
 function OrderTable({ ingredients, removeIngredient }) {
 
