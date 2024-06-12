@@ -9,6 +9,8 @@ import Order from "./Components/Order/Order";
 import CheckOrder from "./Components/Order/CheckOrder";
 import Cart from "./Components/Cart/Cart";
 import CartContext from "./Components/Context/CartContext";
+import Ingredients from "./Components/Order/Ingredients";
+import IngredientsContext from "./Components/Context/IngredientsContext";
 
 function App() {
   return (
@@ -16,15 +18,17 @@ function App() {
     <Container fluid>
         <BrowserRouter>
           <CartContext>
-            <Routes>
-                <Route path="/" element={<Header/>}>
-                  <Route index element={<Home/>} />
-                  <Route path="/Order" element={<Order/>} />
-                  <Route path="/CheckOrder" element={<CheckOrder/>} />
-                  <Route path="/Cart" element={<Cart/>} />
-                  <Route path="*" element={<NoPage/>} />
-                </Route>
-            </Routes>
+              <IngredientsContext>
+                <Routes>
+                    <Route path="/" element={<Header/>}>
+                      <Route index element={<Home/>} />
+                      <Route path="/Order" element={<Order/>} />
+                      <Route path="/CheckOrder" element={<CheckOrder/>} />
+                      <Route path="/Cart" element={<Cart/>} />
+                      <Route path="*" element={<NoPage/>} />
+                    </Route>
+                </Routes>
+              </IngredientsContext>
           </CartContext>
         </BrowserRouter>
     </Container>

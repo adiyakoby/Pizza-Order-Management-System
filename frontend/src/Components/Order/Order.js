@@ -3,25 +3,27 @@ import {Button, Container} from "react-bootstrap";
 import {useContext, useState} from "react";
 import OrderTable from "./OrderTable";
 import {CartContextProvider} from "../Context/CartContext";
+import {IngredientsContextProvider} from "../Context/IngredientsContext";
+import {Link} from "react-router-dom";
 
 function Order() {
-    const [ingredients, setIngredients] = useState([])
-    const {dispatch} = useContext(CartContextProvider);
+    const {ingredients, ingredientsDispatch} = useContext(IngredientsContextProvider);
+    const {cartDispatch} = useContext(CartContextProvider);
 
 
     function addIngredient(ingredient) {
         if (!ingredients.includes(ingredient)) {
-            setIngredients([...ingredients, ingredient]);
+            ingredientsDispatch({type: "add", payload: ingredient});
         }
     }
 
     function removeIngredient(index) {
-        setIngredients(ingredients.filter((ingredient, i) => i !== index));
+        ingredientsDispatch({type: "remove", payload: index});
     }
 
     function addToCart() {
-        dispatch({type: "add", payload: ingredients});
-        setIngredients([]);
+        cartDispatch({type: "add", payload: ingredients});
+        ingredientsDispatch({type: "reset"});
     }
 
     return (
@@ -35,7 +37,7 @@ function Order() {
                 ${ingredients.reduce((totalPrice, ingredient) => totalPrice + parseInt(ingredient.price), 5)}
             </div>
             <Button disabled={ingredients.length < 2} onClick={addToCart}> add to cart</Button>
-            <Button className="bg-danger"> Cancel</Button>
+            <Link className="btn-danger" to='/'> Cancel</Link>
             <Ingredients addIngredient={addIngredient}/>
         </Container>
 );

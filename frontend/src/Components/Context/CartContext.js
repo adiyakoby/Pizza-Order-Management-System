@@ -18,10 +18,11 @@ function cartReducer(state, action) {
 
 
 function CartContext({children}) {
-    const [cart, dispatch] = useReducer(cartReducer, [])
+    const [cart, cartDispatch] = useReducer(cartReducer, [])
+
 
     return(
-        <CartContextProvider.Provider value={{cart, dispatch}}>
+        <CartContextProvider.Provider value={{cart, cartDispatch}}>
             {children}
         </CartContextProvider.Provider>
 
