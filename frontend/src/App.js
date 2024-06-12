@@ -8,7 +8,7 @@ import Header from "./Components/Header";
 import Order from "./Components/Order/Order";
 import CheckOrder from "./Components/Order/CheckOrder";
 import Cart from "./Components/Cart/Cart";
-import CartContext, {CartContextProvider} from "./Components/Context/CartContext";
+import CartContext from "./Components/Context/CartContext";
 
 function App() {
   return (

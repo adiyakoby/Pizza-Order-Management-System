@@ -1,13 +1,14 @@
 import React from 'react';
 import { Outlet } from "react-router";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 function Header() {
     return (
         <Container>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="/">
+                    <Navbar.Brand as={Link} to="/">
                         <img
                             src="/Adis-logo.jpeg"
                             width="60"
@@ -19,10 +20,10 @@ function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">
-                            <Nav.Link href="/Cart">
+                            <Nav.Link as={Link} to="/Cart">
                                 <img
                                     src="/shopping-cart.png"
                                     width="30"

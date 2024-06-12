@@ -4,8 +4,8 @@ function OrderTable({ ingredients, removeIngredient }) {
 
     return (
             <Row className="overflow-auto justify-content-center mt-auto">
-                <Col >
-                    <Table  responsive striped bordered hover  >
+                <Col>
+                    <Table responsive striped bordered hover  >
                         <thead >
                         <tr>
                             <th>#</th>
