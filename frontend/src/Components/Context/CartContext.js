@@ -10,12 +10,10 @@ function cartReducer(state, action) {
                 ...state, action.payload
             ]
         }
-
         case "remove" : {
             return state.filter((pizza, i) => pizza !== action.payload)
         }
     }
-
 }
 
 
