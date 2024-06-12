@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 function Header() {
     return (
-        <>
+        <Container>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
                     <Navbar.Brand href="/">
@@ -36,7 +36,8 @@ function Header() {
                 </Container>
             </Navbar>
             <Outlet />
-        </>
+        </Container>
+
     );
 }
 

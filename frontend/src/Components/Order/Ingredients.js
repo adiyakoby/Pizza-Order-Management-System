@@ -10,10 +10,10 @@ import { Card, Col, Container, Row, Spinner, Alert, Button } from "react-bootstr
  * @returns {[{data: any, isLoading: boolean, isError: boolean}, function]} - Returns the state object and the URL setter function.
  */
 const useDataApi = (initialUrl, initialData) => {
-    const [data, setData] = useState(initialData); // data to be fetched
-    const [url, setUrl] = useState(initialUrl); // any change on this state variable will trigger a fetch
-    const [isLoading, setIsLoading] = useState(false); // is it fetching?
-    const [isError, setIsError] = useState(false); // is there an error?
+    const [data, setData] = useState(initialData);
+    const [url, setUrl] = useState(initialUrl);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,15 +33,14 @@ const useDataApi = (initialUrl, initialData) => {
 
     }, [url]);
 
-    return [{ data, isLoading, isError }, setUrl]; // return the data and the URL setter function
+    return [{ data, isLoading, isError }, setUrl];
 };
 
 function Ingredients({ addIngredient }) {
-    // Using the custom hook to fetch data
     const [{ data: ingredients, isLoading, isError }] = useDataApi('/api/ingredients', []);
 
     return (
-        <Container>
+        <Row className="mb-auto">
             {isError && <Alert variant="danger">Error fetching ingredients.</Alert>}
             {isLoading ? (
                 <div className="d-flex justify-content-center my-4">
@@ -50,10 +49,10 @@ function Ingredients({ addIngredient }) {
                     </Spinner>
                 </div>
             ) : (
-                <Row>
+                <Row className="mt-4">
                     {ingredients.map((ingredient, index) => (
-                        <Col key={index} xs={12} sm={6} md={4} lg={3} xl={2} className="mb-4">
-                            <Card className="h-100">
+                        <Col key={index}  className="mb-4" >
+                            <Card fluid className="h-100 border-1">
                                 <Card.Img variant="top" src={ingredient.image} alt={ingredient.name} />
                                 <Card.Body className="d-flex flex-column">
                                     <Card.Title>{ingredient.name}</Card.Title>
@@ -69,7 +68,7 @@ function Ingredients({ addIngredient }) {
                     ))}
                 </Row>
             )}
-        </Container>
+        </Row>
     );
 }
 
