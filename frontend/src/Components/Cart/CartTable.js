@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import { Table, Button, Form, Row, Col } from "react-bootstrap";
 import { CartContextProvider } from "../Context/CartContext";
 import useDataApi from "../CustomUseEffect/UseDataApi";
