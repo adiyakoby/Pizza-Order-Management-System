@@ -29,11 +29,9 @@ function ingredientsReducer(state, action) {
 function IngredientsContext({children}) {
     const [ingredients, ingredientsDispatch] = useReducer(ingredientsReducer,[])
     return(
-
         <IngredientsContextProvider.Provider value={{ingredients, ingredientsDispatch}}>
             {children}
         </IngredientsContextProvider.Provider>
-
     );
 }
 
