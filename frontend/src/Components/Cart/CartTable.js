@@ -34,7 +34,6 @@ function CartTable() {
 
     //working
     const handleSelectChange = (pizzaIndex, event) => {
-        console.log(selectedIngredients);
         setSelectedIngredients({
             ...selectedIngredients,
             [pizzaIndex]: event.target.value,

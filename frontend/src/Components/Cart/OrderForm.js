@@ -56,10 +56,8 @@ function OrderForm() {
             setOrderId(result.id);
             setOrderPlaced(true);
             cartDispatch({type: "reset"});
-            console.log("Order placed:", result.id);
         } catch (error) {
             setError("There was an error placing your order. Please try again.");
-            console.error("There was an error:", error);
         }
     }
 

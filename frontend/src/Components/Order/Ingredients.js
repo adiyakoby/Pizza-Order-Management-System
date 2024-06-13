@@ -18,7 +18,7 @@ function Ingredients({ addIngredient }) {
                 <Row className="mt-4">
                     {ingredients.map((ingredient, index) => (
                         <Col key={index}  className="mb-4" >
-                            <Card fluid className="h-100 border-1">
+                            <Card className="h-100 border-1">
                                 <Card.Img variant="top" src={ingredient.image} alt={ingredient.name} />
                                 <Card.Body className="d-flex flex-column">
                                     <Card.Title>{ingredient.name}</Card.Title>

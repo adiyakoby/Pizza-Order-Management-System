@@ -27,10 +27,7 @@ function Order() {
     }
 
     return (
-        <Container
-            fluid
-            className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light"
-        >
+        <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light">
             <OrderTable ingredients={ingredients} removeIngredient={removeIngredient}/>
             <div style={{fontSize: '24px', fontWeight: 'bold'}}>
                 Total Price:
