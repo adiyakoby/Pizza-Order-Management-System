@@ -98,7 +98,6 @@ function CartTable() {
                                         onChange={(e) => handleSelectChange(index, e)}
                                         className="ingredient-select"
                                     >
-                                        <option value="">Select Ingredient</option>
                                         {getRemainingIngredients(cart[index]).map((ingredient, i) => (
                                             <option key={i} value={ingredient.name}>
                                                 {ingredient.name}
