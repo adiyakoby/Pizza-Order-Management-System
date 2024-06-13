@@ -6,6 +6,7 @@ import app.Orders.Order;
 import app.Pizzas.IngredientsController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
@@ -53,7 +54,7 @@ public class OrdersRestController {
     public ResponseEntity<String> addOrder(@RequestBody Order order) {
         OrdersController.addOrder(order);
         logger.info("added order {}", order);
-        return ResponseEntity.ok(order.getId());
+        return ResponseEntity.ok().body("{\"id\": \"" + order.getId() + "\"}");
     }
 
     /**
@@ -63,13 +64,14 @@ public class OrdersRestController {
      * @return the requested order.
      */
     @GetMapping("{id}")
-    public Order getOrder(@PathVariable String id) {
+    public ResponseEntity<?> getOrder(@PathVariable String id) {
         Order order = OrdersController.getOrder(id);
         logger.info("requests order {}", id);
         if (order == null) {
             logger.info("order not found");
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-        return order;
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
     /**

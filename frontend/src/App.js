@@ -6,7 +6,7 @@ import Home from "./Components/Home";
 import NoPage from "./Components/NoPage";
 import Header from "./Components/Header";
 import Order from "./Components/Order/Order";
-import CheckOrder from "./Components/Order/CheckOrder";
+import CheckOrder from "./Components/CheckOrder/CheckOrder";
 import Cart from "./Components/Cart/Cart";
 import CartContext from "./Components/Context/CartContext";
 import Ingredients from "./Components/Order/Ingredients";

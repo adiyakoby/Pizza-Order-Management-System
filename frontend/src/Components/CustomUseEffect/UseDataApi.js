@@ -23,6 +23,7 @@ const useDataApi = (initialUrl, initialData) => {
                 setData(result.data);
             } catch (error) {
                 setIsError(true);
+                setData(null);
             } finally {
                 setIsLoading(false);
             }
