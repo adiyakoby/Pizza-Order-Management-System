@@ -1,9 +1,26 @@
+/**
+ * IngredientsRow.js
+ *
+ * This file defines the IngredientsRow component, which renders a row of ingredient cards.
+ * It maps through the provided list of ingredients and displays each ingredient in a Card component.
+ * Each card includes the ingredient's image, name, price, and an "Add" button to add the ingredient to the order.
+ */
+
 import {Button, Card, Col} from "react-bootstrap";
-import React, {useEffect} from "react";
+import React from "react";
 
-
+/**
+ * IngredientsRow Component
+ *
+ * Renders a row of ingredient cards based on the provided array of ingredients. Each card
+ * displays the ingredient's image, name, price, and provides an "Add" button to add the ingredient
+ * to the order.
+ *
+ * @param {Array} ingredients - Array of objects representing ingredients with name, price, and image.
+ * @param {function} addIngredient - Function to add an ingredient to the order.
+ * @returns {JSX.Element} The rendered IngredientsRow component.
+ */
 function IngredientsRow({ingredients, addIngredient}) {
-
     return (
         <>
         {ingredients.map((ingredient, index) => (

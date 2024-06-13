@@ -4,7 +4,14 @@ import React, {useContext, useEffect, useState} from "react";
 import OrderForm from "./OrderForm";
 import {CartContextProvider} from "../Context/CartContext";
 
-
+/**
+ * Cart Component
+ *
+ * Renders a container displaying the cart table, allowing users to view their
+ * selected pizzas with options to order or show an alert if the cart is empty.
+ *
+ * @returns {JSX.Element} Rendered Cart component.
+ */
 function Cart() {
     const { cart } = useContext(CartContextProvider);
     const [ordering, setOrdering] = useState(false)

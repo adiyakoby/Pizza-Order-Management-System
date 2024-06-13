@@ -1,33 +1,61 @@
+/**
+ * CartTable.js
+ *
+ * Renders a table displaying the cart contents with options to add ingredients,
+ * remove pizzas, and calculate total price.
+ */
 import React, {useContext, useEffect, useState} from "react";
 import { Table, Button, Form, Row, Col } from "react-bootstrap";
 import { CartContextProvider } from "../Context/CartContext";
-import useDataApi from "../CustomUseEffect/UseDataApi";
 
 const INGREDIENTS = "ingredients";
 
+/**
+ * CartTable Component
+ *
+ * Renders a table displaying the cart contents with options to add ingredients,
+ * remove pizzas, and calculate total price.
+ *
+ * @returns {JSX.Element} Rendered CartTable component.
+ */
 function CartTable() {
     const { cart, cartDispatch } = useContext(CartContextProvider);
     const [selectedIngredients, setSelectedIngredients] = useState({});
     const [ingredientList, setIngredientList] = useState([])
 
+    // Fetch initial ingredient list from localStorage
     useEffect(() => {
         setIngredientList(JSON.parse(localStorage.getItem(INGREDIENTS)));
     }, []);
 
-    //working
+    /**
+     * Handles adding an ingredient to a pizza in the cart.
+     *
+     * @param {number} index - Index of the pizza in the cart.
+     * @param {Object} ingredient - Ingredient object to add.
+     */
     const handleAddIngredient = (index, ingredient) => {
         const updatedPizza = [...cart[index], ingredient];
         cartDispatch({ type: "update", payload: { index, updatedPizza } });
     };
 
 
-    //working
+    /**
+     * Handles removing a pizza from the cart.
+     *
+     * @param {number} index - Index of the pizza in the cart to remove.
+     */
     const handleRemovePizza = (index) => {
         cartDispatch({ type: "remove", payload: index });
     };
 
 
-    //working
+    /**
+     * Handles removing an ingredient from a pizza in the cart.
+     *
+     * @param {number} index - Index of the pizza in the cart.
+     * @param {number} ingredientIndex - Index of the ingredient in the pizza to remove.
+     */
     const handleRemoveIngredient = (index, ingredientIndex) => {
         const updatedPizza = cart[index].filter((_, i) => i !== ingredientIndex);
         if (updatedPizza.length < 2) {
@@ -37,7 +65,12 @@ function CartTable() {
     };
 
 
-    //working
+    /**
+     * Handles change in selected ingredient for a pizza.
+     *
+     * @param {number} pizzaIndex - Index of the pizza in the cart.
+     * @param {Object} event - Change event object.
+     */
     const handleSelectChange = (pizzaIndex, event) => {
         setSelectedIngredients({
             ...selectedIngredients,
@@ -46,7 +79,12 @@ function CartTable() {
     };
 
 
-    //working
+    /**
+     * Retrieves remaining ingredients that can be added to a pizza.
+     *
+     * @param {Array} pizzaIngredients - Current ingredients of the pizza.
+     * @returns {Array} List of ingredients that can still be added.
+     */
     const getRemainingIngredients = (pizzaIngredients) => {
         return ingredientList.filter(
             availableIngredient => !pizzaIngredients.some(
@@ -55,14 +93,24 @@ function CartTable() {
         );
     };
 
+    /**
+     * Calculates the total price of a pizza.
+     *
+     * @param {Array} pizza - List of ingredients in the pizza.
+     * @returns {number} Total price of the pizza.
+     */
     const calculatePizzaPrice = (pizza) => {
         return pizza.reduce((total, ingredient) => total + ingredient.price, 5);
     };
 
+    /**
+     * Calculates the total price of all pizzas in the cart.
+     *
+     * @returns {number} Total price of all pizzas in the cart.
+     */
     const calculateTotalPrice = () => {
         return cart.reduce((total, pizza) => total + calculatePizzaPrice(pizza), 0);
     };
-
 
     return (
         <>

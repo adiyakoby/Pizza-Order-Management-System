@@ -1,9 +1,21 @@
 import React, {useContext, useEffect, useState} from "react";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
+/**
+ * OrderForm.js
+ *
+ * Renders a form for placing an order with customer details and handles submission.
+ */
 import { CartContextProvider } from "../Context/CartContext";
 import {Link} from "react-router-dom";
 import {getOrderDetailsFromCookie, saveCustomerDetailsToCookie} from "../Utils/CookieUtils";
 
+/**
+ * OrderForm Component
+ *
+ * Renders a form for placing an order with customer details and handles submission.
+ *
+ * @returns {JSX.Element} Rendered OrderForm component.
+ */
 function OrderForm() {
     const { cart, cartDispatch } = useContext(CartContextProvider);
     const [formData, setFormData] = useState({
@@ -22,11 +34,19 @@ function OrderForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
 
+    /**
+     * Handles input change events.
+     *
+     * @param {Object} e - Input change event object.
+     */
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    /**
+     * Registers the order by sending data to the backend API.
+     */
     async function registerOrder() {
         const orderData = {
             firstName: formData.firstName,
@@ -63,6 +83,11 @@ function OrderForm() {
         }
     }
 
+    /**
+     * Handles form submission.
+     *
+     * @param {Object} e - Form submission event object.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -81,6 +106,9 @@ function OrderForm() {
         setValidated(true);
     };
 
+    /**
+     * Retrieves stored customer details from cookies on component mount.
+     */
     useEffect(() => {
         const storedDetails = getOrderDetailsFromCookie();
         if (storedDetails) {

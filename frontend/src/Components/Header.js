@@ -1,8 +1,23 @@
+/**
+ * Header.js
+ *
+ * This file defines the Header component for the Pizza Order App.
+ * It includes a navigation bar with a logo, links to the Home page and Cart, and a responsive menu toggle.
+ * The component also renders nested routes using the React Router Outlet.
+ */
 import React from 'react';
 import { Outlet } from "react-router";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import {Link} from "react-router-dom";
 
+/**
+ * Header Component
+ *
+ * This component represents the header navigation bar of the Pizza Order App.
+ * It contains a logo, links to navigate to the Home page and Cart, and a responsive menu toggle for smaller screens.
+ *
+ * @returns {JSX.Element} The rendered Header component.
+ */
 function Header() {
     return (
         <Container>

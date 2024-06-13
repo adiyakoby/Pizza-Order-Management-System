@@ -1,11 +1,30 @@
+/**
+ * Ingredients.js
+ *
+ * This file defines the Ingredients component, which fetches a list of ingredients
+ * from an API endpoint or localStorage. It displays the ingredients in a row using
+ * the IngredientsRow component. It shows a loading spinner while fetching data
+ * and handles errors if data retrieval fails.
+ */
+
 import React, {useEffect, useState} from "react";
-import { Card, Col, Row, Spinner, Alert, Button } from "react-bootstrap";
+import { Row, Spinner, Alert } from "react-bootstrap";
 import useDataApi from "../CustomUseEffect/UseDataApi";
 import IngredientsRow from "./IngredientsRow";
 
 const INGREDIENT_URL = '/api/ingredients';
 const INGREDIENTS = "ingredients";
 
+/**
+ * Ingredients Component
+ *
+ * This component fetches a list of ingredients from an API endpoint or localStorage.
+ * It displays the ingredients in a row using the IngredientsRow component.
+ * Shows a loading spinner while fetching data and handles errors if data retrieval fails.
+ *
+ * @param {function} addIngredient - Function to add an ingredient to the order.
+ * @returns {JSX.Element} The rendered Ingredients component.
+ */
 function Ingredients({ addIngredient }) {
     const [ingredientList, setIngredientList] = useState([])
     const [{ data: ingredients, isLoading, isError }, setUrl] = useDataApi(null, []); // '/api/ingredients'

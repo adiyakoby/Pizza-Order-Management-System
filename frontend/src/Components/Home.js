@@ -1,7 +1,21 @@
+/**
+ * Home.js
+ *
+ * This file defines the Home component, which serves as the landing page of the Pizza Order App.
+ * It displays a welcome message and buttons to navigate to the "Start New Order" and "Check Order" pages.
+ */
 import React from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+/**
+ * Home Component
+ *
+ * This component renders the landing page of the Pizza Order App. It includes a welcome message
+ * and buttons for navigating to the "Start New Order" and "Check Order" pages.
+ *
+ * @returns {JSX.Element} The rendered Home component.
+ */
 function Home() {
     return (
         <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light">
