@@ -1,6 +1,6 @@
 import {Alert, Button, Container} from "react-bootstrap";
 import CartTable from "./CartTable";
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import OrderForm from "./OrderForm";
 import {CartContextProvider} from "../Context/CartContext";
 
@@ -8,6 +8,12 @@ import {CartContextProvider} from "../Context/CartContext";
 function Cart() {
     const { cart } = useContext(CartContextProvider);
     const [ordering, setOrdering] = useState(false)
+
+    useEffect(() => {
+        if (cart.length === 0 ) {
+            setOrdering(false);
+        }
+    }, [ordering]);
 
     return (
         <Container

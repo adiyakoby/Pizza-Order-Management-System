@@ -1,13 +1,18 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Table, Button, Form, Row, Col } from "react-bootstrap";
 import { CartContextProvider } from "../Context/CartContext";
 import useDataApi from "../CustomUseEffect/UseDataApi";
 
+const INGREDIENTS = "ingredients";
+
 function CartTable() {
     const { cart, cartDispatch } = useContext(CartContextProvider);
     const [selectedIngredients, setSelectedIngredients] = useState({});
-    const [{ data: ingredients, isLoading, isError}] = useDataApi('/api/ingredients', []);
+    const [ingredientList, setIngredientList] = useState([])
 
+    useEffect(() => {
+        setIngredientList(JSON.parse(localStorage.getItem(INGREDIENTS)));
+    }, []);
 
     //working
     const handleAddIngredient = (index, ingredient) => {
@@ -43,7 +48,7 @@ function CartTable() {
 
     //working
     const getRemainingIngredients = (pizzaIngredients) => {
-        return ingredients.filter(
+        return ingredientList.filter(
             availableIngredient => !pizzaIngredients.some(
                 pizzaIngredient => pizzaIngredient.name === availableIngredient.name
             )
@@ -93,7 +98,7 @@ function CartTable() {
                         <td>
                             <Form onSubmit={(e) => {
                                 e.preventDefault();
-                                const ingredient = ingredients.find(ing => ing.name === selectedIngredients[index]);
+                                const ingredient = ingredientList.find(ing => ing.name === selectedIngredients[index]);
                                 if (ingredient) {
                                     handleAddIngredient(index, ingredient);
                                     setSelectedIngredients({...selectedIngredients, [index]: ""});
