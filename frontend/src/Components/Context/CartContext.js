@@ -10,8 +10,14 @@ function cartReducer(state, action) {
                 ...state, action.payload
             ]
         }
+        case "update" : {
+            const { index, updatedPizza } = action.payload;
+            return state.map((pizza, i) => (
+                    i === index ? updatedPizza : pizza
+            ));
+        }
         case "remove" : {
-            return state.filter((pizza, i) => pizza !== action.payload)
+            return state.filter((pizza, index) => index !== action.payload)
         }
     }
 }
