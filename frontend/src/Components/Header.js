@@ -36,8 +36,8 @@ function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/" className="custom-link">
-                                <strong>Home</strong> {/* Adding strong tag for emphasis */}
+                            <Nav.Link as={Link} to="/" className="custom-link" >
+                                <strong >Home</strong> {/* Adding strong tag for emphasis */}
                             </Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">
