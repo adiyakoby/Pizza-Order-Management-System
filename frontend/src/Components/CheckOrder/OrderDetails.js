@@ -1,10 +1,18 @@
 import React from "react";
-import { Table, Alert, Row, Spinner, Col, Card, Button } from "react-bootstrap";
+import { Table, Alert, Row, Spinner, Col, Card } from "react-bootstrap";
+import CustomerDetails from "./CustomerDetails";
+import OrderTable from "./OrderTable";
 
 function OrderDetails({ orderDetails, isLoading, isError }) {
+    const calculatePizzaPrice = (pizza) => {
+        return pizza.ingredients.reduce((total, ingredient) => total + ingredient.price, 5);
+    };
+
+    const calculateTotalPrice = (pizzas) => {
+        return pizzas.reduce((total, pizza) => total + calculatePizzaPrice(pizza), 0);
+    };
 
     return (
-
         <Row className="mb-auto">
             {isError && <Alert variant="danger">Error fetching data.</Alert>}
             {isLoading ? (
@@ -14,50 +22,30 @@ function OrderDetails({ orderDetails, isLoading, isError }) {
                     </Spinner>
                 </div>
             ) : (
-                <Row className="mb-auto">
-                    <Col md={6}>
-                        <Card className="mb-3">
-                            <Card.Body>
-                                <Card.Title>Customer Details</Card.Title>
-                                <Card.Text>
-                                    <strong>Name:</strong> {orderDetails.firstName} {orderDetails.lastName}<br />
-                                    <strong>Address:</strong> {orderDetails.address.street}, {orderDetails.address.houseNumber}, {orderDetails.address.city}<br />
-                                    <strong>Phone Number:</strong> {orderDetails.number}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col md={6}>
-                        <Table striped bordered hover>
-                            <thead>
-                            <tr>
-                                <th>Pizza ID</th>
-                                <th>Ingredients</th>
-                                <th>Price</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {orderDetails.pizzas.map((pizza, index) => (
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>
-                                        <ul>
-                                            {pizza.ingredients.map((ingredient, i) => (
-                                                <li key={i}>{ingredient.name} (${ingredient.price})</li>
-                                            ))}
-                                        </ul>
-                                    </td>
-                                    <td>${pizza.ingredients.reduce((total, ingredient) => total + ingredient.price, 0)}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
+                <>
+                    <Row className="mb-auto">
+                        <Col md={6}>
+                            <CustomerDetails orderDetails={orderDetails} />
+                        </Col>
+                        <Col md={6}>
+                            <OrderTable orderDetails={orderDetails} calculatePizzaPrice={calculatePizzaPrice} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6} className="offset-md-6">
+                            <Card>
+                                <Card.Body>
+                                    <Card.Text>
+                                        <strong>Total Price:</strong> ${calculateTotalPrice(orderDetails.pizzas)}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                </>
             )}
         </Row>
     );
-
 }
 
 export default OrderDetails;
