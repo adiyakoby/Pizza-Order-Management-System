@@ -98,6 +98,7 @@ function CartTable() {
                                         onChange={(e) => handleSelectChange(index, e)}
                                         className="ingredient-select"
                                     >
+                                        <option value="">Select Ingredient</option>
                                         {getRemainingIngredients(cart[index]).map((ingredient, i) => (
                                             <option key={i} value={ingredient.name}>
                                                 {ingredient.name}
@@ -106,7 +107,7 @@ function CartTable() {
                                     </Form.Control>
                                 </Col>
                                 <Col sm="4">
-                                    <Button type="submit" variant="primary" disabled={!selectedIngredients[index]}>
+                                <Button type="submit" variant="primary" disabled={!selectedIngredients[index]}>
                                         Add
                                     </Button>
                                 </Col>
