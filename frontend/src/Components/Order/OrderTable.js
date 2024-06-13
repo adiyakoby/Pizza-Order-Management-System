@@ -23,7 +23,7 @@ function OrderTable({ ingredients, removeIngredient }) {
     return (
         <Row className="overflow-auto justify-content-center mt-auto w-100">
             <Col xs={10} md={8} lg={6}>
-                <Table responsive striped  bordered hover className="shadow-sm">
+                <Table responsive striped bordered hover className="shadow-sm">
                     <thead className="thead-dark">
                     <tr>
                         <th>#</th>

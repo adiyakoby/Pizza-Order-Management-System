@@ -3,6 +3,7 @@ import CartTable from "./CartTable";
 import React, {useContext, useEffect, useState} from "react";
 import OrderForm from "./OrderForm";
 import {CartContextProvider} from "../Context/CartContext";
+import "./Cart.css";
 
 /**
  * Cart Component
@@ -23,18 +24,27 @@ function Cart() {
     }, [ordering]);
 
     return (
-        <Container
-            fluid
-            className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light"
-        >
-            <CartTable/>
-            {cart.length === 0 && !ordering &&
-                <Alert variant="warning">Your cart is empty. Please add some pizzas to your cart.</Alert>
-            }
-            {ordering ?
-                <OrderForm/> : <Button onClick={() => setOrdering(true)} disabled={cart.length === 0}> Order Now</Button>
-            }
-        </Container>
+        <div className="cart-page">
+            <video autoPlay muted loop className="background-video">
+                <source src="/PizzaClip2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div className="content-container">
+                <Container fluid className="cart-container">
+                    <CartTable />
+                    {cart.length === 0 && !ordering && (
+                        <Alert variant="warning">Your cart is empty. Please add some pizzas to your cart.</Alert>
+                    )}
+                    {ordering ? (
+                        <OrderForm />
+                    ) : (
+                        <Button onClick={() => setOrdering(true)} disabled={cart.length === 0} className="order-button">
+                            Order Now
+                        </Button>
+                    )}
+                </Container>
+            </div>
+        </div>
     );
 }
 

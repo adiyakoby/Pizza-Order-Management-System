@@ -46,11 +46,19 @@ function CheckOrder() {
     }, [orderDetails, isError]);
 
     return (
-        <Container>
-            <CheckForm handleSubmit={handleSubmit} orderId={orderId} setOrderId={setOrderId} />
-            {!orderDetails && error !== "" && (<Alert variant="danger">No such order id.</Alert>)}
-            {orderDetails && <OrderDetails orderDetails={orderDetails} isError={isError} isLoading={isLoading} />}
-        </Container>
+        <div className="check-order-page">
+            <video autoPlay muted loop className="background-video">
+                <source src="/PizzaClip.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div className="content-container">
+                <Container>
+                    <CheckForm handleSubmit={handleSubmit} orderId={orderId} setOrderId={setOrderId} />
+                    {!orderDetails && error !== "" && <Alert variant="danger">No such order id.</Alert>}
+                    {orderDetails && <OrderDetails orderDetails={orderDetails} isError={isError} isLoading={isLoading} />}
+                </Container>
+            </div>
+        </div>
     );
 }
 

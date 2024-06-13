@@ -5,9 +5,9 @@
  * It maps through the provided list of ingredients and displays each ingredient in a Card component.
  * Each card includes the ingredient's image, name, price, and an "Add" button to add the ingredient to the order.
  */
-
 import {Button, Card, Col} from "react-bootstrap";
 import React from "react";
+import "./IngredientsRow.css"; // Import your custom CSS file
 
 /**
  * IngredientsRow Component
@@ -23,9 +23,9 @@ import React from "react";
 function IngredientsRow({ingredients, addIngredient}) {
     return (
         <>
-        {ingredients.map((ingredient, index) => (
+            {ingredients.map((ingredient, index) => (
                 <Col key={index} xs="auto" className="mb-4">
-                    <Card className="h-100 w-100 border-0 shadow-sm">
+                    <Card className="h-100 w-100 border-0 shadow-sm custom-card">
                         <Card.Img
                             variant="top"
                             src={ingredient.image}

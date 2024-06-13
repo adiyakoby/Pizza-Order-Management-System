@@ -1,0 +1,20 @@
+/* Header.css */
+
+/* Custom styling for the navigation bar */
+.custom-navbar {
+    background-color: transparent;
+    padding: 1rem;
+}
+
+/* Styling for the home and cart buttons */
+.custom-link {
+    font-size: 1.5rem; /* Increase font size for better visibility */
+    color: #333; /* Set your desired text color */
+    margin-right: 1rem; /* Add spacing between buttons */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+
+    /* Hover effect */
+    &:hover {
+        color: #007bff; /* Change color on hover */
+    }
+}

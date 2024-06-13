@@ -9,6 +9,7 @@ import React from 'react';
 import { Outlet } from "react-router";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import {Link} from "react-router-dom";
+import "./Header.css";
 
 /**
  * Header Component
@@ -21,7 +22,7 @@ import {Link} from "react-router-dom";
 function Header() {
     return (
         <Container>
-            <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg" className="bg-transparent custom-navbar">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
                         <img
@@ -35,14 +36,16 @@ function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/" className="custom-link">
+                                <strong>Home</strong> {/* Adding strong tag for emphasis */}
+                            </Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">
-                            <Nav.Link as={Link} to="/Cart">
+                            <Nav.Link as={Link} to="/Cart" className="custom-link">
                                 <img
                                     src="/shopping-cart.png"
-                                    width="30"
-                                    height="30"
+                                    width="50"
+                                    height="50"
                                     className="d-inline-block align-top"
                                     alt="cart"
                                 />
@@ -53,7 +56,6 @@ function Header() {
             </Navbar>
             <Outlet />
         </Container>
-
     );
 }
 
