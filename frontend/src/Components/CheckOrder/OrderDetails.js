@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Alert, Row, Spinner, Col, Card } from "react-bootstrap";
 import CustomerDetails from "./CustomerDetails";
-import OrderTable from "./OrderTable";
+import OrderTable from "./CheckOrderTable";
 
 function OrderDetails({ orderDetails, isLoading, isError }) {
     const calculatePizzaPrice = (pizza) => {

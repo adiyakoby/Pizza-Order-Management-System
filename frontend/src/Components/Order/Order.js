@@ -1,44 +1,56 @@
-import Ingredients from "./Ingredients";
-import {Button, Container} from "react-bootstrap";
-import {useContext, useState} from "react";
+import React, { useContext } from "react";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import OrderTable from "./OrderTable";
-import {CartContextProvider} from "../Context/CartContext";
-import {IngredientsContextProvider} from "../Context/IngredientsContext";
-import {Link} from "react-router-dom";
+import Ingredients from "./Ingredients";
+import { CartContextProvider } from "../Context/CartContext";
+import { IngredientsContextProvider } from "../Context/IngredientsContext";
 
 function Order() {
-    const {ingredients, ingredientsDispatch} = useContext(IngredientsContextProvider);
-    const {cartDispatch} = useContext(CartContextProvider);
+    const { ingredients, ingredientsDispatch } = useContext(IngredientsContextProvider);
+    const { cartDispatch } = useContext(CartContextProvider);
 
-
-    function addIngredient(ingredient) {
-        if (!ingredients.includes(ingredient)) {
-            ingredientsDispatch({type: "add", payload: ingredient});
+    const addIngredient = (ingredient) => {
+        for (const ingredientElement of ingredients) {
+            if (ingredientElement.name === ingredient.name) {
+                return null;
+            }
         }
-    }
+        ingredientsDispatch({ type: "add", payload: ingredient });
+    };
 
-    function removeIngredient(index) {
-        ingredientsDispatch({type: "remove", payload: index});
-    }
+    const removeIngredient = (index) => {
+        ingredientsDispatch({ type: "remove", payload: index });
+    };
 
-    function addToCart() {
-        cartDispatch({type: "add", payload: ingredients});
-        ingredientsDispatch({type: "reset"});
-    }
+    const addToCart = () => {
+        cartDispatch({ type: "add", payload: ingredients });
+        ingredientsDispatch({ type: "reset" });
+    };
+
+    const totalPrice = ingredients.reduce((totalPrice, ingredient) => totalPrice + parseFloat(ingredient.price), 0).toFixed(2);
 
     return (
-        <Container fluid className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light">
-            <OrderTable ingredients={ingredients} removeIngredient={removeIngredient}/>
-            <div style={{fontSize: '24px', fontWeight: 'bold'}}>
-                Total Price:
-                ${ingredients.reduce((totalPrice, ingredient) => totalPrice + parseInt(ingredient.price), 5)}
+        <Container fluid className="d-flex flex-column justify-content-center align-items-center text-center bg-light">
+            <OrderTable ingredients={ingredients} removeIngredient={removeIngredient} />
+            <div style={{ fontSize: '24px', fontWeight: 'bold', margin: '20px 0' }}>
+                Total Price: ${totalPrice}
             </div>
-            <Button disabled={ingredients.length < 2} onClick={addToCart}> add to cart</Button>
-            <Link className="btn btn-danger" to='/' onClick={() => ingredientsDispatch({type: "reset"})}> Cancel</Link>
-            <Ingredients addIngredient={addIngredient}/>
+            <Row>
+                <Col>
+                    <Button disabled={ingredients.length < 2} onClick={addToCart} className="mb-2">
+                        Add to Cart
+                    </Button>
+                </Col>
+                <Col>
+                    <Link className="btn btn-danger mb-2" to='/' onClick={() => ingredientsDispatch({ type: "reset" })}>
+                        Cancel
+                    </Link>
+                </Col>
+            </Row>
+            <Ingredients addIngredient={addIngredient} />
         </Container>
-);
-
+    );
 }
 
 export default Order;

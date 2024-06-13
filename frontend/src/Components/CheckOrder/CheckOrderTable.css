@@ -1,0 +1,14 @@
+.ingredient-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.ingredient-list-item span {
+    font-size: 0.9rem;
+}
+
+.text-muted {
+    color: #6c757d;
+}
