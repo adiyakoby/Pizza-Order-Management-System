@@ -16,7 +16,6 @@ function CheckOrder() {
     };
 
     useEffect(() => {
-        console.log(orderDetails , orderId);
         if(!orderDetails && orderId !== "" && !isLoading) {
             setError("There is no such order id.");
         } else {

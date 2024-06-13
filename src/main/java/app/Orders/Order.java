@@ -32,6 +32,7 @@ public class Order {
         checkNotNull(address);
         checkNotEmptyAndEqualLength(number, 10);
         checkNotNullAndLengthAboveEq(pizzas, 1);
+
         for (Pizza pizza : pizzas) {
             checkNotNullAndLengthAboveEq(pizza.getIngredients(), 2);
         }
