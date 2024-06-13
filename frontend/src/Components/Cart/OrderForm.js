@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { CartContextProvider } from "../Context/CartContext";
+import {Link} from "react-router-dom";
 
 function OrderForm() {
-    const { cart } = useContext(CartContextProvider);
+    const { cart, cartDispatch } = useContext(CartContextProvider);
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -54,6 +55,7 @@ function OrderForm() {
             const result = await response.json();
             setOrderId(result.id);
             setOrderPlaced(true);
+            cartDispatch({type: "reset"});
             console.log("Order placed:", result.id);
         } catch (error) {
             setError("There was an error placing your order. Please try again.");
@@ -79,16 +81,20 @@ function OrderForm() {
         setValidated(true);
     };
 
-    if (cart.length === 0) {
-        return <Alert variant="warning">Your cart is empty. Please add some pizzas to your cart.</Alert>;
-    }
+
 
     return (
         <Container>
             {orderPlaced ? (
-                <Alert variant="success">
-                    Your order has been placed successfully! Your order ID is: <strong>{orderId}</strong>
-                </Alert>
+                <>
+                    <Alert variant="success">
+                        Your order has been placed successfully! Your order ID is: <strong>{orderId}</strong>
+                    </Alert>
+                    <Link to="/Order" className="btn btn-primary mx-2">
+                        Start new Order
+                    </Link>
+                </>
+
             ) : (
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     {error && <Alert variant="danger">{error}</Alert>}

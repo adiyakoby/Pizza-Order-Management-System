@@ -19,6 +19,9 @@ function cartReducer(state, action) {
         case "remove" : {
             return state.filter((pizza, index) => index !== action.payload)
         }
+        case "reset" : {
+            return []
+        }
     }
 }
 
