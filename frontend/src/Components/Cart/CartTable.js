@@ -51,78 +51,94 @@ function CartTable() {
         );
     };
 
+    const calculatePizzaPrice = (pizza) => {
+        return pizza.reduce((total, ingredient) => total + ingredient.price, 5);
+    };
+
+    const calculateTotalPrice = () => {
+        return cart.reduce((total, pizza) => total + calculatePizzaPrice(pizza), 0);
+    };
+
 
     return (
-        <Table responsive striped bordered hover>
-            <thead>
-            <tr>
-                <th>Pizza</th>
-                <th>Ingredients</th>
-                <th>Add Ingredient</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {cart.map((pizza, index) => (
-                <tr key={index}>
-                    <td>Pizza {index + 1}</td>
-                    <td>
-                        {pizza.map((ingredient, i) => (
-                            <div key={i} className="d-flex justify-content-between align-items-center mb-2">
-                                <span>{ingredient.name}</span>
-                                <Button
-                                    className="ms-2"
-                                    variant="danger"
-                                    size="sm"
-                                    onClick={() => handleRemoveIngredient(index, i)}
-                                >
-                                    x
-                                </Button>
-                            </div>
-                        ))}
-                    </td>
-                    <td>
-                        <Form onSubmit={(e) => {
-                            e.preventDefault();
-                            const ingredient = ingredients.find(ing => ing.name === selectedIngredients[index]);
-                            if (ingredient) {
-                                handleAddIngredient(index, ingredient);
-                                setSelectedIngredients({ ...selectedIngredients, [index]: "" });
-                            }
-                        }}>
-                            <Form.Group as={Row} className="mb-2">
-                                <Col sm="8">
-                                    <Form.Control
-                                        as="select"
-                                        value={selectedIngredients[index] || ""}
-                                        onChange={(e) => handleSelectChange(index, e)}
-                                        className="ingredient-select"
-                                    >
-                                        <option value="">Select Ingredient</option>
-                                        {getRemainingIngredients(cart[index]).map((ingredient, i) => (
-                                            <option key={i} value={ingredient.name}>
-                                                {ingredient.name}
-                                            </option>
-                                        ))}
-                                    </Form.Control>
-                                </Col>
-                                <Col sm="4">
-                                <Button type="submit" variant="primary" disabled={!selectedIngredients[index]}>
-                                        Add
-                                    </Button>
-                                </Col>
-                            </Form.Group>
-                        </Form>
-                    </td>
-                    <td>
-                        <Button variant="danger" onClick={() => handleRemovePizza(index)}>
-                            Remove Pizza
-                        </Button>
-                    </td>
+        <>
+            <Table responsive striped bordered hover>
+                <thead>
+                <tr>
+                    <th>Pizza</th>
+                    <th>Ingredients</th>
+                    <th>Add Ingredient</th>
+                    <th>Price</th>
+                    <th>Actions</th>
                 </tr>
-            ))}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+                {cart.map((pizza, index) => (
+                    <tr key={index}>
+                        <td>Pizza {index + 1}</td>
+                        <td>
+                            {pizza.map((ingredient, i) => (
+                                <div key={i} className="d-flex justify-content-between align-items-center mb-2">
+                                    <span>{ingredient.name}</span>
+                                    <Button
+                                        className="ms-2"
+                                        variant="danger"
+                                        size="sm"
+                                        onClick={() => handleRemoveIngredient(index, i)}
+                                    >
+                                        x
+                                    </Button>
+                                </div>
+                            ))}
+                        </td>
+                        <td>
+                            <Form onSubmit={(e) => {
+                                e.preventDefault();
+                                const ingredient = ingredients.find(ing => ing.name === selectedIngredients[index]);
+                                if (ingredient) {
+                                    handleAddIngredient(index, ingredient);
+                                    setSelectedIngredients({...selectedIngredients, [index]: ""});
+                                }
+                            }}>
+                                <Form.Group as={Row} className="mb-2">
+                                    <Col sm="8">
+                                        <Form.Control
+                                            as="select"
+                                            value={selectedIngredients[index] || ""}
+                                            onChange={(e) => handleSelectChange(index, e)}
+                                            className="ingredient-select"
+                                        >
+                                            <option value="">Select Ingredient</option>
+                                            {getRemainingIngredients(cart[index]).map((ingredient, i) => (
+                                                <option key={i} value={ingredient.name}>
+                                                    {ingredient.name}
+                                                </option>
+                                            ))}
+                                        </Form.Control>
+                                    </Col>
+                                    <Col sm="4">
+                                        <Button type="submit" variant="primary" disabled={!selectedIngredients[index]}>
+                                            Add
+                                        </Button>
+                                    </Col>
+                                </Form.Group>
+                            </Form>
+                        </td>
+                        <td>${calculatePizzaPrice(pizza).toFixed(2)}</td>
+                        <td>
+                            <Button variant="danger" onClick={() => handleRemovePizza(index)}>
+                                Remove Pizza
+                            </Button>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </Table>
+            <div className="mt-3">
+                <h4>Total Price: ${calculateTotalPrice().toFixed(2)}</h4>
+            </div>
+        </>
+
     );
 }
 
