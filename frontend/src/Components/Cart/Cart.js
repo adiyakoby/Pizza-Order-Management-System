@@ -1,5 +1,7 @@
 import {useContext, useEffect} from "react";
 import {CartContextProvider} from "../Context/CartContext";
+import {Container} from "react-bootstrap";
+import CartTable from "./CartTable";
 
 
 function Cart() {
@@ -7,20 +9,12 @@ function Cart() {
 
 
     return (
-        <>
-            <h1>Cart page</h1>
-            {cart.length === 0 ? (
-                <p>Your cart is empty.</p>
-            ) : (
-                <ul>
-                    {cart.map((item, index) => (
-                        item.map((item, index) => (
-                            <li key={index}>{item.name} - ${item.price}</li>
-                        ))
-                    ))}
-                </ul>
-            )}
-        </>
+        <Container
+            fluid
+            className="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-light"
+        >
+            <CartTable/>
+        </Container>
     );
 }
 

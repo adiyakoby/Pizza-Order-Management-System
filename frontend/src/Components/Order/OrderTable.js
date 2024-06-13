@@ -36,11 +36,7 @@ function OrderTable({ ingredients, removeIngredient }) {
                         Please add at least 2 ingredients to your order.
                     </Alert>
                 )}
-
-
             </Row>
-
-
     );
 }
 

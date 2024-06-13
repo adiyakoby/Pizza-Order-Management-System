@@ -37,7 +37,7 @@ function Order() {
                 ${ingredients.reduce((totalPrice, ingredient) => totalPrice + parseInt(ingredient.price), 5)}
             </div>
             <Button disabled={ingredients.length < 2} onClick={addToCart}> add to cart</Button>
-            <Link className="btn-danger" to='/'> Cancel</Link>
+            <Link className="btn btn-danger" to='/' onClick={() => ingredientsDispatch({type: "reset"})}> Cancel</Link>
             <Ingredients addIngredient={addIngredient}/>
         </Container>
 );

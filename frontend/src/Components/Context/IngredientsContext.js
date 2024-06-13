@@ -11,6 +11,12 @@ function ingredientsReducer(state, action) {
                 ...state, action.payload
             ]
         }
+        case "update" : {
+            const { index, newIngredient } = action.payload;
+            return state.map((ingredient, i) =>
+                i === index ? { ...ingredient, ...newIngredient } : ingredient
+            );
+        }
         case "remove" : {
             return state.filter((ingredient, i) => i !== action.payload)
         }
