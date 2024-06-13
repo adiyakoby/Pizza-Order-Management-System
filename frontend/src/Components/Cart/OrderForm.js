@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { CartContextProvider } from "../Context/CartContext";
 import {Link} from "react-router-dom";
+import {getOrderDetailsFromCookie, saveCustomerDetailsToCookie} from "../Utils/CookieUtils";
 
 function OrderForm() {
     const { cart, cartDispatch } = useContext(CartContextProvider);
@@ -56,6 +57,7 @@ function OrderForm() {
             setOrderId(result.id);
             setOrderPlaced(true);
             cartDispatch({type: "reset"});
+            saveCustomerDetailsToCookie(formData);
         } catch (error) {
             setError("There was an error placing your order. Please try again.");
         }
@@ -79,7 +81,12 @@ function OrderForm() {
         setValidated(true);
     };
 
-
+    useEffect(() => {
+        const storedDetails = getOrderDetailsFromCookie();
+        if (storedDetails) {
+            setFormData(storedDetails);
+        }
+    }, []);
 
     return (
         <Container>

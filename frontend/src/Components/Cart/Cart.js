@@ -9,7 +9,6 @@ function Cart() {
     const { cart } = useContext(CartContextProvider);
     const [ordering, setOrdering] = useState(false)
 
-
     return (
         <Container
             fluid
