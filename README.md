@@ -1,19 +1,16 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/Ke_DgSzD)
+# Pizza Order Management System
+
+## Project Overview
+
+Welcome to the Pizza Order Management System! This web application allows users to customize pizzas with various ingredients, add them to their cart, and place orders. The system includes features such as viewing and editing cart items, placing orders, and displaying order details.
 
 ## Acknowledgements
 
 Special thanks to Solange for granting permission to submit this project with a delay. Your understanding and support are greatly appreciated.
 
-## Author - [Adi Yakoby - adija@edu.hac.ac.il]
+## Author
 
-
-
-
-# Pizza Order Management System
-
-## Project Overview
-
-This project is a Pizza Order Management System that allows users to customize pizzas with various ingredients, add them to their cart, and place orders. The system includes features like viewing and editing cart items, placing orders, and displaying order details.
+**Adi Yakoby** - [adija@edu.hac.ac.il](mailto:adija@edu.hac.ac.il)
 
 ## Features
 
@@ -24,49 +21,61 @@ This project is a Pizza Order Management System that allows users to customize p
 
 ## Technologies Used
 
-- **Frontend**:
-    - **React**: Frontend library for building user interfaces.
-    - **React Bootstrap**: UI components library based on Bootstrap.
-    - **Context API**: State management for cart functionality.
-    - **Custom Hooks**: Custom hooks for data fetching and handling.
-    - **Local Storage**: Store ingredients and customer details locally.
-- **Backend**:
-    - **Java**: Programming language for backend logic.
-    - **Spring Framework**: Framework for building the backend server.
-    - **Spring Boot**: Module of Spring for creating standalone applications.
-    - **Spring Data JPA**: For database operations.
-    - **Spring MVC**: For handling web requests.
+### Frontend
+
+- **React**: Frontend library for building user interfaces.
+- **React Bootstrap**: UI components library based on Bootstrap.
+- **Context API**: State management for cart functionality.
+- **Custom Hooks**: Custom hooks for data fetching and handling.
+- **Local Storage**: Store ingredients and customer details locally.
+
+### Backend
+
+- **Java**: Programming language for backend logic.
+- **Spring Framework**: Framework for building the backend server.
+- **Spring Boot**: Module of Spring for creating standalone applications.
+- **Spring Data JPA**: For database operations.
+- **Spring MVC**: For handling web requests.
 
 ## Installation
 
-1. Clone the repository:
+### Prerequisites
+
+- Node.js and npm installed
+- Java Development Kit (JDK) installed
+- Maven installed
+
+### Steps
+
+1. **Clone the repository:**
     ```bash
     git clone https://github.com/adiyakoby/pizza-order-management.git
     ```
 
-2. Navigate to the project directory:
+2. **Navigate to the project directory:**
     ```bash
     cd pizza-order-management
     ```
 
-3. Install frontend dependencies:
+3. **Install frontend dependencies:**
     ```bash
+    cd frontend
     npm install
     ```
 
-4. Start the frontend development server:
+4. **Start the frontend development server:**
     ```bash
     npm start
     ```
 
-5. Navigate to the `backend` directory:
+5. **Navigate to the backend directory:**
     ```bash
-    cd backend
+    cd ../src/main/java
     ```
 
-6. Install backend dependencies and run the Spring Boot application:
+6. **Install backend dependencies and run the Spring Boot application:**
     ```bash
-    ./mvnw spring-boot:run
+    mvn spring-boot:run
     ```
 
 ## Usage
@@ -87,17 +96,33 @@ This project is a Pizza Order Management System that allows users to customize p
 
 ## Project Structure
 
-- `src/Components`: Contains React components for the project.
+### Frontend
+
+- `frontend/src/Components`: Contains React components for the project.
     - `CartTable.js`: Displays the cart with pizzas and ingredients.
     - `OrderForm.js`: Form for entering customer details and placing orders.
     - `OrderDetails.js`: Displays details of placed orders.
     - `CustomerDetails.js`: Displays customer details within order details.
     - `CheckForm.js`: Form for checking order status.
-- `src/Context`: Contains the CartContextProvider for managing cart state.
-- `src/CustomHooks`: Contains custom hooks for data fetching and state management.
-- `src/Utils`: Contains utility functions for handling cookies and other tasks.
-- `backend`: Contains the Java Spring backend code.
-    - `src/main/java`: Contains Java source files.
-    - `src/main/resources`: Contains application properties and other resources.
+- `frontend/src/Context`: Contains the CartContextProvider for managing cart state.
+- `frontend/src/CustomHooks`: Contains custom hooks for data fetching and state management.
+- `frontend/src/Utils`: Contains utility functions for handling cookies and other tasks.
 
+### Backend
 
+- `src/main/java`: Contains Java source files.
+- `src/main/resources`: Contains application properties and other resources.
+
+## Screenshots
+
+### Home Page
+![Home Page](https://github.com/adiyakoby/Pizza-Order-Management-System/blob/main/PizzaHomePage.png)
+
+### Pizza Customization
+![Pizza Customization](https://github.com/adiyakoby/Pizza-Order-Management-System/blob/main/PizzaCustom.png)
+
+### Cart Page
+![Cart Page](https://github.com/adiyakoby/Pizza-Order-Management-System/blob/main/PizzaCartPage.png)
+
+### Order Details
+![Order Details](https://github.com/adiyakoby/Pizza-Order-Management-System/blob/main/PizzaOrderDet.png)
